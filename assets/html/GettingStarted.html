@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Getting Started</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="getting-started">Getting Started</h1>
+<ul>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#what-is-django">What is Django</a></li>
+<li><a href="#features-of-django">Features of Django</a></li>
+<li><a href="#history-behind-django">History behind Django</a></li>
+<li><a href="#how-django-works">How Django works?</a></li>
+<li><a href="#is-django-mvc">Is Django MVC?</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="what-is-django">What is Django</h2>
+<p>As the official description says, <a href="https://djangoproject.com">Django</a> is a high-level Python web framework that encourages rapid development and clean, pragmatic design. In other words, it is a complete web framework with batteries included just like Python.</p>
+<ul>
+<li>It is free and open source, has a thriving and active community, great documentation, and many options for free and paid-for support.</li>
+</ul>
+<h2 id="features-of-django">Features of Django</h2>
+<p>Django helps you write software that is</p>
+<ul>
+<li>
+<p><strong>Batteries Included</strong>: Django follows the &quot;Batteries included&quot; philosophy and provides almost everything developers might want to do &quot;out of the box&quot;.</p>
+</li>
+<li>
+<p><strong>Versatile</strong>: Django can be (and has been) used to build almost any type of website — from content management systems and wikis, through to social networks and news sites.</p>
+</li>
+<li>
+<p><strong>Secure</strong>: Django helps developers avoid many common security mistakes by providing a framework that has been engineered to &quot;do the right things&quot; to protect the website automatically. For example, Django provides a secure way to manage user accounts and passwords, avoiding common mistakes like putting session information in cookies where it is vulnerable (instead cookies just contain a key, and the actual data is stored in the
+database) or directly storing passwords rather than a password hash.</p>
+</li>
+<li>
+<p><strong>Scalable</strong>: Django uses a component-based “shared-nothing” architecture (each part of the architecture is independent of the others, and can hence be replaced or changed if needed). Having a clear separation between the different parts means that it can scale for increased traffic by adding hardware at any level: caching servers, database servers, or application servers. Some of the busiest sites have successfully scaled Django to meet
+their demands (e.g. Instagram and Disqus, to name just two).</p>
+</li>
+<li>
+<p><strong>Maintainable</strong>: Django code is written using design principles and patterns that encourage the creation of maintainable and reusable code. In particular, it makes use of the <em>Don't Repeat Yourself (DRY)</em> principle so there is no unnecessary duplication, reducing the amount of code. Django also promotes the grouping of related functionality into reusable &quot;applications&quot; and, at a lower level, groups related code into modules (along the lines of the Model View Controller (MVC) pattern).</p>
+</li>
+<li>
+<p><strong>Portable</strong>: Django is written in Python, which runs on many platforms. That means that you are not tied to any particular server platform, and can run your applications on many flavours of Linux, Windows, and Mac OS X. Furthermore, Django is well-supported by many web hosting providers, who often provide specific infrastructure and documentation for hosting Django sites.</p>
+</li>
+</ul>
+<h2 id="history-behind-django">History behind Django</h2>
+<p>Django was initially developed between 2003 and 2005 by two programmers, <em>Adrian Holovaty</em> and <em>Simon Willison</em>, working on creating several local news websites in Kansas at the Lawrence Journal-World newspaper. After creating a number of sites, the team began to factor out and reuse lots of common code and design patterns. This common code evolved into a generic web development framework, which was open-sourced as the &quot;Django&quot; project in
+July 2005.</p>
+<p>At the time of writing this, Django has 3 major released versions:</p>
+<ol>
+<li>Django 1.x</li>
+<li>Django 2.x</li>
+<li>Django 3.x (Latest)</li>
+</ol>
+<h2 id="how-django-works">How Django works?</h2>
+<p>To truly appreciate Django, you will need to peek under the hood and see the various moving parts inside. This can be both enlightening and overwhelming.</p>
+<p><img src="file:////home/deqode/MyWork/DjangoNotes/assets/images/django_architecture.png" alt="Django Architecture"></p>
+<p>The preceding diagram shows the simplified journey of a web request from a visitor's browser to your Django application and back. The numbered paths are as follows:</p>
+<ol>
+<li>
+<p>The browser sends the request (essentially, a string of bytes) to your web server.</p>
+</li>
+<li>
+<p>Your web server (say, Nginx) hands over the request to a Web Server Gateway Interface (WSGI) server (say, uWSGI) or directly serves a file (say, a CSS file) from the filesystem.</p>
+</li>
+<li>
+<p>Unlike a web server, WSGI servers can run Python applications. The request populates a Python dictionary called environ and, optionally, passes through several layers of middleware, ultimately reaching your Django application.</p>
+</li>
+<li>
+<p>URLconf (URL configuration) module contained in the <code>urls.py</code> of your project selects a view to handle the request based on the requested URL. The request has turned into HttpRequest, a Python object.</p>
+</li>
+<li>
+<p>The selected view typically does one or more of the following things:</p>
+<p>a. Talks to a database via the models.
+b. Renders HTML or any other formatted response using templates
+c. Returns a plain text response (not shown)
+d. Raises an exception</p>
+</li>
+<li>
+<p>The HttpResponse object gets rendered into a string, as it leaves the Django application.</p>
+</li>
+<li>
+<p>A beautifully rendered web page is seen in your user's browser.</p>
+</li>
+</ol>
+<h2 id="is-django-mvc">Is Django MVC?</h2>
+<p>Model-View-Controller (MVC) is an architectural pattern invented by Xerox PARC in the 70s. Being the framework used to build user interfaces in Smalltalk, it gets an early mention in the GoF book.</p>
+<p>Today, MVC is a very popular pattern in web application frameworks. A variant of the common question is whether Django is an MVC framework.</p>
+<p>The answer is both yes and no. The MVC pattern advocates the decoupling of the presentation layer from the application logic. For instance, while designing an online game website API, you might present a game's high scores table as an HTML, XML, or comma-separated values (CSV) file. However, its underlying model class would be designed independently of how the data would be finally presented.</p>
+<p>MVC is very rigid about what models, views, and controllers do. However, Django takes a much more practical view to web applications. Due to the nature of the HTTP protocol, each request for a web page is independent of any other request. Django's framework is designed like a pipeline to process each request and prepare a response.</p>
+<p>Django calls this the Model-Template-View (MTV) architecture. There is a separation of concerns between the database interfacing classes (model), request-processing classes (view), and a templating language for the final presentation (template).</p>
+<p>If you compare this with the classic MVC — a model is comparable to Django's Models; a view is usually Django's Templates, and the controller is the framework itself that processes an incoming HTTP request and routes it to the correct view function.</p>
+
+    </body>
+    </html>
